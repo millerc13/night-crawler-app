@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "night-crawler-app",
-    "slug": "night-crawler-app",
+    "name": "NightCrawler",
+    "slug": "NightCrawler",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
