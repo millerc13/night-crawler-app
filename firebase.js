@@ -5,15 +5,21 @@ import * as firebase from "firebase";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDkroUEQQmZaD3NhAF_Y8CUjXcXholZupQ",
-  authDomain: "nightcrawler-f7af2.firebaseapp.com",
-  projectId: "nightcrawler-f7af2",
-  storageBucket: "nightcrawler-f7af2.appspot.com",
-  messagingSenderId: "1043258161294",
-  appId: "1:1043258161294:web:891b639a484a03656df1df",
-  measurementId: "G-CE123B8VF8"
+  apiKey: "AIzaSyD-8O8ys8bwF4N4-bGavw5KwziaHwELVNU",
+  authDomain: "group13-night-crawler.firebaseapp.com",
+  projectId: "group13-night-crawler",
+  storageBucket: "group13-night-crawler.appspot.com",
+  messagingSenderId: "52466109472",
+  appId: "1:52466109472:web:3f22774086f5053cd74045",
+  measurementId: "G-QN54Z2X23D"
 };
+
+
 
 // Initialize Firebase
 let app;
