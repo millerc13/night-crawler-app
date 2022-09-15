@@ -1,11 +1,14 @@
 import { useNavigation } from "@react-navigation/core";
+import { Video } from "expo-av";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
   const handleSignOut = () => {
     auth
       .signOut()
@@ -17,7 +20,17 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Email: {auth.currentUser?.email}</Text>
+      <Video
+        ref={video}
+        style={styles.video}
+        source={{
+          uri: "https://firebasestorage.googleapis.com/v0/b/group13-night-crawler.appspot.com/o/videos%2Fsample-5s.mp4?alt=media&token=6d1f926e-4b37-407e-9c98-3d70001df011"
+        }}
+        useNativeControls
+        resizeMode="contain"
+        isLooping
+        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      />
       <TouchableOpacity onPress={handleSignOut} style={styles.button}>
         <Text style={styles.buttonText}>Sign out</Text>
       </TouchableOpacity>
@@ -45,5 +58,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 16
+  },
+  video: {
+    width: 200,
+    height: 150,
+    resizeMode: "contain",
+    borderRadius: 10
   }
 });
