@@ -1,7 +1,5 @@
 # import libraries needed from firebaes
 import pyrebase
-import os
-
 # Configuration copied from firebase console.
 config = {
   'apiKey': "AIzaSyD-8O8ys8bwF4N4-bGavw5KwziaHwELVNU",
@@ -14,6 +12,8 @@ config = {
   'measurementId': "G-QN54Z2X23D"
 }
 
+
+
 # Initialize firebase with config copied from firebase console
 firebase = pyrebase.initialize_app(config);
 
@@ -22,35 +22,39 @@ firebase = pyrebase.initialize_app(config);
 auth = firebase.auth();
 
 # Make reference to firebase realtime database
-# - this will be responsible for moving the servo from application 
+# - this will be responsible for moving the servo from application
 db = firebase.database();
 
 # Test username and password
-email = 'teamprojectsWSUgroup13@gmail.com'
-pwd = 'TeamProjects72'
+email = 'vidsample@gmail.com'
+pwd = '121212'
 
 # Create test user given credentials
 # Only run below line if user has not been created yet
 # auth.create_user_with_email_and_password(email, pwd)
 auth_token = auth.sign_in_with_email_and_password(email, pwd)
-
+print(auth_token['localId'])
 # A user's idToken expires after 1 hour, so be sure to use the user's refreshToken to avoid stale tokens.
 token_id = auth_token['idToken']
 
 # Realtime Database Example Usage:``
-new_user = {
-        'username': 'this is a new random username',
-        'bday': '01/01/1990',
-        'age': 32,
-        'bio': 'i am a new user',
-        'email': 'thisISrandom23432@gmail.com',
-    }
-db.child('users').child('random_username').set(new_user, token_id)
+# new_user = {
+#         'username': 'this is a new random username',
+#         'bday': '01/01/1990',
+#         'age': 32,
+#         'bio': 'i am a new user',
+#         'email': 'thisISrandom23432@gmail.com',
+#     }
+# db.child('users').child('random_username').set(new_user, token_id)
+
+# Local File
+path_local = "sample-15s.mp4"
 
 # Implementation of FIREBASE STORAGE
-path_on_cloud = "videos/sample-5s.mp4"
+path_on_cloud = 'users/' + auth_token['localId'] + '/videos/' + path_local
+print(path_on_cloud)
+
 
 #Upload Sample Video to firebase storage
-path_local = "sample-5s.mp4"
 storage = firebase.storage()
 storage.child(path_on_cloud).put(path_local)
