@@ -37,6 +37,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { auth } from "./firebase";
+import ControlScreen from "./screens/ControlScreen";
 import LoginScreen from "./screens/LoginScreen";
 import { default as SettingsScreen } from "./screens/SettingsScreen";
 
@@ -95,6 +96,24 @@ function HomeTabs() {
         }}
         component={HomeScreen}
       />
+
+      <Tab.Screen
+        name="Controls Screen"
+        options={{
+          headerShown: false,
+          // @ts-ignore
+          tabBarIcon: ({ ref }) => (
+            <Lottie
+              ref={ref}
+              loop={false}
+              source={require("./assets/lottie/controls.icon.json")}
+              style={styles.iconControls}
+            />
+          )
+        }}
+        component={ControlScreen}
+      />
+
       <Tab.Screen
         name="Settings"
         options={{
@@ -270,5 +289,9 @@ const styles = StyleSheet.create({
   icon: {
     height: 36,
     width: 36
+  },
+  iconControls: {
+    height: 42,
+    width: 42
   }
 });
