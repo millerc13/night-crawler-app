@@ -10,6 +10,7 @@ import { Button, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
 
 export default function MotorControlScreen() {
+  const time_motors = 5000;
   function forward() {
     firebase.database().ref("users/command/motor").set({
       direction: "forward"
@@ -18,7 +19,7 @@ export default function MotorControlScreen() {
       firebase.database().ref("users/command/motor").set({
         direction: "stop"
       });
-    }, 5000);
+    }, time_motors);
   }
 
   function backwards() {
@@ -29,7 +30,7 @@ export default function MotorControlScreen() {
       firebase.database().ref("users/command/motor").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
 
   function left() {
@@ -40,7 +41,7 @@ export default function MotorControlScreen() {
       firebase.database().ref("users/command/motor").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
 
   function right() {
@@ -51,18 +52,13 @@ export default function MotorControlScreen() {
       firebase.database().ref("users/command/motor").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
 
-  function test() {
-    firebase.database().ref("users/command/motor").set({
-      direction: "test"
+  function motorSpeed(speed) {
+    firebase.database().ref("users/command/motor_speed").set({
+      speed: speed
     });
-    setTimeout(() => {
-      firebase.database().ref("users/command/motor").set({
-        direction: "test"
-      });
-    }, 10000);
   }
 
   return (
@@ -70,11 +66,6 @@ export default function MotorControlScreen() {
       <View className="flex-row justify-center p-5">
         <TouchableOpacity
           onPress={forward}
-          onPressOut={() => {
-            firebase.database().ref("users/command/motor").set({
-              direction: "forward"
-            });
-          }}
           className="p-5 bg-blue-300 dark:bg-purple-600 rounded-2xl"
         >
           <Ionicons name="arrow-up" size={32} color="black" />
@@ -84,11 +75,6 @@ export default function MotorControlScreen() {
         <View className="flex-row justify-center p-5">
           <TouchableOpacity
             onPress={left}
-            onPressOut={() => {
-              firebase.database().ref("users/command/motor").set({
-                direction: "left"
-              });
-            }}
             className="p-5 bg-blue-300  dark:bg-purple-600 rounded-2xl"
           >
             <Ionicons name="arrow-back" size={32} color="black" />
@@ -98,11 +84,6 @@ export default function MotorControlScreen() {
           <View className="flex-row justify-center p-5">
             <TouchableOpacity
               onPress={right}
-              onPressOut={() => {
-                firebase.database().ref("users/command/motor").set({
-                  direction: "right"
-                });
-              }}
               className="p-5 bg-blue-300 dark:bg-purple-600  rounded-2xl"
             >
               <Ionicons name="arrow-forward" size={32} color="black" />
@@ -113,36 +94,36 @@ export default function MotorControlScreen() {
       <View className="flex-row justify-center p-5">
         <TouchableOpacity
           onPress={backwards}
-          onPressOut={() => {
-            firebase.database().ref("users/command/motor").set({
-              direction: "backwards"
-            });
-          }}
           className="p-5 bg-blue-300 dark:bg-purple-600 rounded-2xl"
         >
           <Ionicons name="arrow-down" size={32} color="black" />
         </TouchableOpacity>
       </View>
-      {/* <Button
-        title="Test"
-        onPress={test}
-        onPressOut={() => {
-          firebase.database().ref("users/command/motor").set({
-            direction: "test"
-          });
-        }}
-      ></Button> */}
+
       <View className="flex-row justify-center p-5">
         <TouchableOpacity
-          onPress={backwards}
-          onPressOut={() => {
-            firebase.database().ref("users/command/motor").set({
-              direction: "backwards"
-            });
+          onPress={() => {
+            motorSpeed("low");
           }}
-          className="p-5 bg-blue-300 dark:bg-purple-600 rounded-2xl"
+          className="p-5 bg-blue-500 dark:bg-purple-600 rounded-2xl mr-5"
         >
-          <Ionicons name="ios-arrow-down" size={32} color="black" />
+          <Text>Low</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            motorSpeed("medium");
+          }}
+          className="p-5 bg-yellow-500 dark:bg-purple-600 rounded-2xl"
+        >
+          <Text>Medium</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            motorSpeed("high");
+          }}
+          className="p-5 bg-green-500 dark:bg-purple-600 rounded-2xl ml-5"
+        >
+          <Text>High</Text>
         </TouchableOpacity>
       </View>
     </View>

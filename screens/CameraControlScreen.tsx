@@ -10,6 +10,7 @@ import { Button, Text, TouchableOpacity, View } from "react-native";
 import { auth } from "../firebase";
 
 export default function CameraControlScreen() {
+  const time_motors = 5000;
   // up
   function servoUp() {
     firebase.database().ref("users/command/servo").set({
@@ -19,7 +20,7 @@ export default function CameraControlScreen() {
       firebase.database().ref("users/command/servo").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
 
   function servoDown() {
@@ -30,7 +31,7 @@ export default function CameraControlScreen() {
       firebase.database().ref("users/command/servo").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
 
   function servoLeft() {
@@ -41,7 +42,7 @@ export default function CameraControlScreen() {
       firebase.database().ref("users/command/servo").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
   function servoRight() {
     firebase.database().ref("users/command/servo").set({
@@ -51,7 +52,7 @@ export default function CameraControlScreen() {
       firebase.database().ref("users/command/servo").set({
         direction: "stop"
       });
-    }, 3000);
+    }, time_motors);
   }
   return (
     <View className="flex-1 justify-center bg-white bg">
