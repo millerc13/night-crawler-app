@@ -30,6 +30,7 @@ import Lottie from "lottie-react-native";
 import { useColorScheme } from "nativewind";
 import HomeScreen from "./screens/HomeScreen";
 
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/core";
 import {
   KeyboardAvoidingView,
@@ -37,8 +38,9 @@ import {
   TouchableOpacity
 } from "react-native";
 import { auth } from "./firebase";
-import ControlScreen from "./screens/ControlScreen";
+import CameraControlScreen from "./screens/CameraControlScreen";
 import LoginScreen from "./screens/LoginScreen";
+import MotorControlScreen from "./screens/MotorControllScreen";
 import { default as SettingsScreen } from "./screens/SettingsScreen";
 
 const Stack = createNativeStackNavigator();
@@ -86,32 +88,33 @@ function HomeTabs() {
           headerShown: false,
           // @ts-ignore
           tabBarIcon: ({ ref }) => (
-            <Lottie
-              ref={ref}
-              loop={false}
-              source={require("./assets/lottie/chat.icon.json")}
-              style={styles.icon}
-            />
+            <Ionicons name="ios-videocam" size={32} color="black" />
           )
         }}
         component={HomeScreen}
       />
 
       <Tab.Screen
-        name="Controls Screen"
+        name="Motor Controls Screen"
         options={{
           headerShown: false,
           // @ts-ignore
           tabBarIcon: ({ ref }) => (
-            <Lottie
-              ref={ref}
-              loop={false}
-              source={require("./assets/lottie/controls.icon.json")}
-              style={styles.iconControls}
-            />
+            <Ionicons name="ios-car" size={32} color="black" />
           )
         }}
-        component={ControlScreen}
+        component={MotorControlScreen}
+      />
+      <Tab.Screen
+        name="Camera Controll Screen"
+        options={{
+          headerShown: false,
+          // @ts-ignore
+          tabBarIcon: ({ ref }) => (
+            <Ionicons name="md-camera-reverse" size={32} color="black" />
+          )
+        }}
+        component={CameraControlScreen}
       />
 
       <Tab.Screen

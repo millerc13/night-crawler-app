@@ -1,5 +1,6 @@
 # import libraries needed from firebaes
 import pyrebase
+from collections.abc import MutableMapping
 # Configuration copied from firebase console.
 config = {
   'apiKey': "AIzaSyD-8O8ys8bwF4N4-bGavw5KwziaHwELVNU",
