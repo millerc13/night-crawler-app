@@ -34,6 +34,17 @@ export default function CameraControlScreen() {
     }, time_motors);
   }
 
+  function servoCenter() {
+    firebase.database().ref("users/command/servo").set({
+      direction: "center"
+    });
+    setTimeout(() => {
+      firebase.database().ref("users/command/servo").set({
+        direction: "stop"
+      });
+    }, time_motors);
+  }
+
   function servoLeft() {
     firebase.database().ref("users/command/servo").set({
       direction: "left"
@@ -71,6 +82,14 @@ export default function CameraControlScreen() {
             className="p-5 bg-blue-300  dark:bg-purple-600 rounded-2xl"
           >
             <Ionicons name="arrow-back" size={32} color="black" />
+          </TouchableOpacity>
+        </View>
+        <View className="flex-row justify-center p-5">
+          <TouchableOpacity
+            onPress={servoCenter}
+            className="p-5 bg-blue-300 dark:bg-purple-600  rounded-2xl"
+          >
+            <Ionicons name="pause-circle" size={32} color="black" />
           </TouchableOpacity>
         </View>
         <View className="flex-row justify-center">
