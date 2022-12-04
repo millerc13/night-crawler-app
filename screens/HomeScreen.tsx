@@ -89,7 +89,12 @@ export default function TabOneScreen() {
         onRefresh={onRefresh}
         className="bg-neutral-50 dark:bg-neutral-900 text-center text-black dark:text-white"
       />
-      <Text className="p-20 bg-neutral-50 dark:bg-neutral-900 text-center text-black dark:text-white">
+      <Button
+        onPress={onRefresh}
+        title="Refresh"
+        className="ios:hidden p-5 bg-blue-300 dark:bg-purple-600  rounded-2xl android: mb-10 android:flex"
+      ></Button>
+      <Text className="android:hidden p-20 bg-neutral-50 dark:bg-neutral-900 text-center text-black dark:text-white">
         Swipe down to refresh!
       </Text>
     </ScrollView>

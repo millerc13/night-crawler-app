@@ -26,7 +26,7 @@ const LoginScreen = () => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // console.log(user.email);
-        navigation.replace("Home");
+        navigation.replace("Night Crawler");
         const currentUser = firebase.auth().currentUser;
         const db = firebase.firestore();
         db.collection("users").doc(currentUser.uid).set({

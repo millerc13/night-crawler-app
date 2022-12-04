@@ -59,12 +59,13 @@ export default function App() {
           component={LoginScreen}
         />
         <Stack.Screen
-          name="Home"
+          name="Night Crawler"
           component={HomeTabs}
           options={{
             headerTintColor: `${
               colorScheme === "dark" ? "#ffffff" : "#ffffff"
             }`,
+            headerShown: false,
             headerStyle: {
               backgroundColor: `${
                 colorScheme === "dark" ? "#9333ea" : "#2563eb"
@@ -83,9 +84,13 @@ function HomeTabs() {
   return (
     <Tab.Navigator tabBar={(props) => <AnimatedTabBar {...props} />}>
       <Tab.Screen
-        name="Chat Screen"
+        name="Recorded Videos"
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: `${colorScheme === "dark" ? "#9333ea" : "#2563eb"}`
+          },
+          headerTintColor: `${colorScheme === "dark" ? "#ffffff" : "#ffffff"}`,
           // @ts-ignore
           tabBarIcon: ({ ref }) => (
             <Ionicons name="ios-videocam" size={32} color="black" />
@@ -97,7 +102,13 @@ function HomeTabs() {
       <Tab.Screen
         name="Motor Controls Screen"
         options={{
-          headerShown: false,
+          title: "Motor Control",
+
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: `${colorScheme === "dark" ? "#9333ea" : "#2563eb"}`
+          },
+          headerTintColor: `${colorScheme === "dark" ? "#ffffff" : "#ffffff"}`,
           // @ts-ignore
           tabBarIcon: ({ ref }) => (
             <Ionicons name="ios-car" size={32} color="black" />
@@ -106,9 +117,13 @@ function HomeTabs() {
         component={MotorControlScreen}
       />
       <Tab.Screen
-        name="Camera Controll Screen"
+        name="Camera Control"
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: `${colorScheme === "dark" ? "#9333ea" : "#2563eb"}`
+          },
+          headerTintColor: `${colorScheme === "dark" ? "#ffffff" : "#ffffff"}`,
           // @ts-ignore
           tabBarIcon: ({ ref }) => (
             <Ionicons name="md-camera-reverse" size={32} color="black" />
@@ -120,10 +135,13 @@ function HomeTabs() {
       <Tab.Screen
         name="Settings"
         options={{
-          headerTintColor: `${colorScheme === "dark" ? "#9ca3af" : "#000000"}`,
+          title: "Settings",
+
+          headerShown: true,
           headerStyle: {
-            backgroundColor: `${colorScheme === "dark" ? "#171717" : "#d1d5db"}`
+            backgroundColor: `${colorScheme === "dark" ? "#9333ea" : "#2563eb"}`
           },
+          headerTintColor: `${colorScheme === "dark" ? "#ffffff" : "#ffffff"}`,
 
           // @ts-ignore
           tabBarIcon: ({ ref }) => (

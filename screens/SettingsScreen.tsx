@@ -28,15 +28,6 @@ const Contact = () => {
 
   return (
     <View className="flex-1 justify-start bg-neutral-50  dark:bg-neutral-900">
-      <View tw="flex-row justify-between p-2 align-center">
-        <Image
-          source={{ uri: "https://i.ibb.co/CtB4fth/profile-cj.png" }}
-          style={{ width: 50, height: 50, borderRadius: 30 }}
-        />
-        <Text tw="flex-1 text-start ml-3 font-bold mt-2 text-lg dark:text-white ">
-          CJ Miller
-        </Text>
-      </View>
       <View tw="flex-row justify-between p-2 align-center ">
         <Text tw="flex-1 text-start ml-3 font-bold mt-2 text-lg dark:text-white">
           Toggle Dark Mode
